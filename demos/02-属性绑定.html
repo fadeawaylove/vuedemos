@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css"/>
+		<script src="../js/vue-2.5.16.js" type="text/javascript" charset="utf-8"></script>
+		
+		<style type="text/css">
+			.red{
+				color: red;
+			}
+			.green{
+				color: green;
+			}
+			.box{
+				width: 300px;
+				height: 300px;
+				background-color: red;
+			}
+		</style>
+		
+	</head>
+	<body>
+		<div id="app" class="container">
+			<!-- <div :title="atitle"> 省略写法 -->
+			<div v-bind:title="atitle">
+				<span>我是你爸爸</span>
+			</div>
+			
+			<img :src="img_url" class="img-responsive img-circle center-block" alt="Responsive image">
+			
+			<!-- v-html 绑定html语言，给当前的block添加html，让浏览器解析 -->
+			<div v-html="h">
+			</div>
+			
+			<!-- v-text 绑定数据的另一种方式 -->
+			<div v-text="h">
+			</div>
+			
+			<!-- v-bind:class 用来绑定类 其实就是样式 -->
+			<ul>
+				<li v-for="(a,index) in alist" :class="{'red': index%2==0, 'green': index%2!=0}">
+					{{a}}-{{a}}-{{a}}-{{a}}-{{a}}-{{a}}-{{a}}-{{a}}-{{a}}-{{a}}-{{a}}-{{a}}-{{a}}
+				</li>
+			</ul>
+			
+			<!-- v-bind:style 绑定内联样式 -->
+			<div class="box" :style="{width: box_width +'px'}">
+				
+			</div>
+			
+		</div>
+		
+		
+	</body>
+	
+	<script type="text/javascript">
+		var app = new Vue({
+			el: "#app",
+			data: {
+				atitle: "绑定属性title",
+				img_url: "https://t1.hddhhn.com/uploads/tu/201901/497/1.jpg",
+				h: "<h2>我是你爸爸！</h2>",
+				alist: [1,2,3,4,5,6,7,8,9,0],
+				box_width: 500,
+				
+			}
+		})
+	</script>
+</html>
