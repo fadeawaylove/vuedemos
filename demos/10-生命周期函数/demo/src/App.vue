@@ -26,7 +26,6 @@ export default {
     console.log("实例创建之前");
   }
 
-
 }
 </script>
 
