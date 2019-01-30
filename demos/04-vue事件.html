@@ -23,7 +23,7 @@
     <br>
     <button type="button" @click="deleteData(222)" name="button">删除数据222</button>
     <br>
-    <button type="button" data-aid="123"  @click="eventFn($event)" name="button">事件对象</button>
+    <button type="button" data-aid="123" @click="eventFn($event)" name="button">事件对象</button>
 
   </div>
 
@@ -41,13 +41,13 @@
           this.alist.push("我是第" + i + "条数据");
         }
       },
-      deleteData(val){
+      deleteData(val) {
         alert(val);
       },
-      eventFn(e){
+      eventFn(e) {
         // 事件对象
         console.log(e);
-        e.srcElement.style.background="red";
+        e.srcElement.style.background = "red";
         // 获取自定义属性的值
         console.log(e.srcElement.dataset.aid);
       }

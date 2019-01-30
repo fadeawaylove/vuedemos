@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <link rel="stylesheet" href="../css/bootstrap.min.css">
+  <script src="../js/vue-2.5.16.js" charset="utf-8"></script>
+</head>
+
+<body>
+  <div class="container" id="app">
+    <div class="form-group">
+      <label><input type="text" @keyup.enter="doAdd($event)"></label>
+    </div>
+
+
+    <hr>
+    <!-- 渲染checked为false的数据 -->
+    <h2>进行中</h2>
+    <ul>
+      <li v-for="(item,index) in list" v-if="!item.checked">
+        <input type="checkbox" v-model="item.checked">
+        {{item.title}}
+        <button type="button" @click="removeData(index)">删除</button>
+      </li>
+    </ul>
+
+    <hr>
+    <h2>完成</h2>
+    <ul>
+      <li v-for="(item,index) in list" v-if="item.checked">
+        <input type="checkbox" v-model="item.checked">
+        {{item.title}}
+        <button type="button" @click="removeData(index)">删除</button>
+      </li>
+    </ul>
+
+  </div>
+</body>
+<script type="text/javascript">
+  var app = new Vue({
+    el: "#app",
+    data: {
+      list: [{
+          title: "学习vue",
+          checked: false
+        },
+        {
+          title: "学习python",
+          checked: true,
+        }
+      ],
+      ok: false,
+
+    },
+    methods: {
+      doAdd(e) {
+        // console.log(e);
+        var cur_thing = e.srcElement.value;
+        if (!cur_thing) {
+          alert("填点东西吧，大爷！")
+          return
+        }
+        // 加入到list中
+        this.list.push({
+          title: cur_thing,
+          checked: false
+        });
+        e.srcElement.value = '';
+
+      },
+      removeData(index) {
+        // 根据下标删除对应的数据
+        this.list.splice(index, 1);
+
+      }
+
+    }
+  })
+</script>
+
+
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <script src="../js/vue-2.5.16.js" charset="utf-8"></script>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+
+  </head>
+  <body>
+    <div class="container" id="app">
+      <label for=""><input type="text" ref="adata" name="" value=""><button @click="addData()">+增加</button></label>
+
+      <hr>
+      <ol>
+        <li v-for="(a,index) in listData">
+          {{a}} <button type="button" @click="deleteData(index)" name="button">删除</button>
+        </li>
+      </ol>
+
+    </div>
+
+  </body>
+  <script type="text/javascript">
+    var app = new Vue({
+      el: "#app",
+      data: {
+        listData: []
+
+      },
+      methods:{
+        addData(){
+          // 往todolist添加数据
+          var curData = this.$refs.adata.value;
+          this.listData.push(curData);
+          // 添加完之后将表单中的value清空
+          this.$refs.adata.value = '';
+        },
+        deleteData(index){
+            // 删除传进来的下标对应的值
+            this.listData.splice(index, 1);
+        }
+
+      }
+
+    })
+  </script>
+</html>
