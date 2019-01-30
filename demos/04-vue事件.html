@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh-hans" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <link rel="stylesheet" href="../css/bootstrap.min.css">
+  <script src="../js/vue-2.5.16.js" charset="utf-8"></script>
+</head>
+
+<body>
+  <div class="container" id="app">
+
+    <ul>
+      <li v-for="(item, key) in alist">
+        {{key}}==>{{item}}
+      </li>
+    </ul>
+
+    <button type="button" @click="requestData()" name="button">获取数据</button>
+    <br>
+    <button type="button" @click="deleteData(111)" name="button">删除数据111</button>
+    <br>
+    <button type="button" @click="deleteData(222)" name="button">删除数据222</button>
+    <br>
+    <button type="button" data-aid="123"  @click="eventFn($event)" name="button">事件对象</button>
+
+  </div>
+
+</body>
+<script type="text/javascript">
+  var app = new Vue({
+    el: "#app",
+    data: {
+      alist: [],
+    },
+    methods: {
+      requestData() {
+        // 给列表塞数据
+        for (var i = 0; i < 10; i++) {
+          this.alist.push("我是第" + i + "条数据");
+        }
+      },
+      deleteData(val){
+        alert(val);
+      },
+      eventFn(e){
+        // 事件对象
+        console.log(e);
+        e.srcElement.style.background="red";
+        // 获取自定义属性的值
+        console.log(e.srcElement.dataset.aid);
+      }
+    }
+
+  });
+</script>
+
+</html>

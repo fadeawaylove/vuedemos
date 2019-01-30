@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <script src="../js/vue-2.5.16.js" charset="utf-8"></script>
+
+  </head>
+  <body>
+    <div class="container" id="app">
+      <h2>{{message}}</h2>
+
+      <!-- v-model相当于动态绑定了input的数据 -->
+      <input type="text" v-model='message'>
+
+      <br>
+      <hr>
+      <button type="button" @click="getMsg()" name="button"></button>
+      <button type="button" @click="setMsg()" name="button"></button>
+
+
+      <br>
+      <hr>
+      <input type="text" ref="userInfo" />
+      <br>
+      <br>
+      <div ref="box">
+        我是一个box
+      </div>
+      <br><br>
+      <button type="button" @click="getUserInfo()" name="button">获取第二个表单里面的数据</button>
+
+
+    </div>
+  </body>
+  <script type="text/javascript">
+  /*
+双向数据绑定   MVVM   vue就是一个MVVM的框架。
+
+M  model
+
+V  view
+
+MVVM：  model改变会影响视图view，view视图改变反过来影响model
+
+
+双向数据绑定必须在表单里面使用。
+
+
+*/
+    var app = new Vue({
+      el: "#app",
+      data:{
+        message: "你好Vue",
+      },
+      methods:{
+        getMsg(){
+          alert(this.message);
+        },
+        setMsg(){
+          this.message = "我是你爸爸";
+        },
+        getUserInfo(){
+          //获取ref定义的dom节点
+          console.log(this.$refs.userInfo);
+          this.$refs.box.style.background='red';
+
+          alert(this.$refs.userInfo.value);
+        },
+
+      }
+    })
+
+
+  </script>
+</html>
