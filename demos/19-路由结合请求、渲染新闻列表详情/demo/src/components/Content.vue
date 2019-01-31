@@ -1,8 +1,6 @@
 <template>
-<div id="content" class="container">
-    <h2>这是详情页面</h2>
-    
-    <h3>{{contentList.title}}</h3>
+<div id="content" class="container">    
+    <h2>{{contentList.title}}</h2>
     <div v-html="contentList.content"></div>
 
 

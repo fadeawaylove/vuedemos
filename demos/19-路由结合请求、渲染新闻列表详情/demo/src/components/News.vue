@@ -1,8 +1,7 @@
 <template>
     <div>
-        <h2>News</h2>
-        <ul>
-            <li v-for="(item, key) in list">
+        <ul class="list-group">
+            <li class="list-group-item" v-for="(item, key) in list">
                 <router-link :to="'/content/' + item.aid">
                     {{item.title}}
                 </router-link>

@@ -1,13 +1,14 @@
 <template>
-  <div id="app" >
+  <div id="app" class="container">
 
-      <router-link to='/home'>到主页</router-link>
-      <router-link to='/news'>到新闻</router-link>
+      <!-- 导航栏的样式 -->
+      <router-link to='/home'>主页</router-link>
+
+      <router-link to='/news'>新闻</router-link>
 
       <br>
       <hr>
-
-    
+      
     <router-view></router-view>
   </div>
 </template>
